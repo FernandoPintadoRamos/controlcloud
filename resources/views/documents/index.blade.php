@@ -163,15 +163,8 @@
           Añadir Documentación
         </div>
       </a>
-      <!--
-      @if(Auth::user()->role=='supervisor')
-      <a href="{{ route('adjuntar')}}" class="enlace">
-        <div class="pop">
-          Adjuntar Documentación a trabajador
-        </div>
-      </a>
-      @endif-->
 
+      <!--
       @if(Auth::user()->role=='supervisor')
       <a href="#" data-toggle="modal" data-target="#selectModal" class="enlace">
         <div class="pop">
@@ -191,6 +184,7 @@
         </div>
       </a>
       @endif
+      -->
     </div>
 <div class="center">
 

@@ -209,10 +209,10 @@ class DocumentController extends Controller
                         $nuevo_nom_archivo = $nuevo_nom_archivo[sizeof($nuevo_nom_archivo)-1];
 
                         //FTP
-                        $uri = "ftp://copiasrar.hknominas.es:Appnomina123456@ftp.hknominas.es";
+                        $uri = "";
 
-                        $connection = ftp_connect("ftp.hknominas.es");
-                        $login = ftp_login($connection, "copiasrar.hknominas.es", "Appnomina123456");
+                        $connection = ftp_connect("");
+                        $login = ftp_login($connection, "", "");
 
                         $uri = $uri.'/'.$usuario_ftp;
                         $ruta_ftp = $usuario_ftp;
@@ -353,7 +353,7 @@ class DocumentController extends Controller
     }
     
     public function nominas(){
-        $tipo          = 'General';
+        $tipo          = 'Nóminas';
         $usuario       = Auth::id();
         $users         = User::all();
         $use           = User::find($usuario);  // Nombre empleado logueado
@@ -381,16 +381,16 @@ class DocumentController extends Controller
     }
 
     public function documentosCertificados(){
-        $tipo          = 'General';
+        $tipo          = 'Docuementos y certificados';
         $usuario       = Auth::id();
         $users         = User::all();
         $use           = User::find($usuario);  // Nombre empleado logueado
         if($use->role == 'empleado'){
-            $documents = Document::orderBy('created_at', 'ASC')->where('id_worker', $usuario)->where('tipo', '=', 'documentacion')->paginate(4);
+            $documents = Document::orderBy('created_at', 'ASC')->where('id_worker', $usuario)->where('tipo', '=', 'certificado')->paginate(4);
         }elseif($use->role == 'jefe'){
-            $documents = Document::orderBy('created_at', 'ASC')->where('CIF', '=', $use->CIF)->where('tipo', '=', 'documentacion')->paginate(4);
+            $documents = Document::orderBy('created_at', 'ASC')->where('CIF', '=', $use->CIF)->where('tipo', '=', 'certificado')->paginate(4);
         } else {
-            $documents_todos = Document::orderBy('created_at', 'ASC')->where('tipo', '=', 'documentacion')->paginate(6);
+            $documents_todos = Document::orderBy('created_at', 'ASC')->where('tipo', '=', 'certificado')->paginate(6);
             $documents = array();
             $all_cifs = Empresa::where('id_supervisor', Auth::user()->id)->get('CIF')->toArray();
             $cont_emp = 0;

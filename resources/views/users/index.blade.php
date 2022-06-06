@@ -18,6 +18,7 @@
   <?php
     use App\User;
     use App\Empresa;
+    use App\Image;
   ?>
   
   <style>
@@ -314,6 +315,15 @@
     </div>
   </div>
 
+  
+  <?php
+    $imagen = Image::where('id_worker', Auth::user()->id)->first();
+    if($imagen != null){
+      $nombre = $imagen->img;
+      $ruta = '../storage/app/documents/'.$nombre;
+    }
+  ?>
+
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       @foreach($users as $index)
@@ -323,29 +333,9 @@
       @else
       <div>
         <div class="carousel-inner">
-        @foreach($a['imagenes'] as $index => $i)
-          @if(Auth::user()->role=='supervisor')
-            @if($index == 0)
-              <div>
-                <img class="foto_perfil_supervisor" src="{{asset('../storage/app/users/'.$i['img'])}}">
-              </div>
-            @else
-              <div class="carousel-item">
-                <img class="foto_perfil_supervisor" src="{{asset('../storage/app/users/'.$i['img'])}}">
-              </div>
-            @endif
-          @else
-            @if($index == 0)
-              <div>
-                  <a href="{{route('users.show', ['id' => Auth::user()->id])}}"><img class="foto_perfil" src="{{asset('../storage/app/users/'.$i['img'])}}"></a>
-              </div>
-            @else
-              <div class="carousel-item">
-                  <a href="{{route('users.show', ['id' => Auth::user()->id])}}"><img class="foto_perfil" src="{{asset('../storage/app/users/'.$i['img'])}}"></a>
-              </div>
-            @endif
-          @endif
-        @endforeach
+          @isset($nombre)
+          <img class="foto_perfil_supervisor" src="{{asset($ruta)}}">
+          @endisset
       </div>  
       @endif
       @endforeach
