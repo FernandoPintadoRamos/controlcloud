@@ -1135,7 +1135,7 @@ function scanear_string($string)
             foreach($imgBorrado as $i){
                 $valor = intval($i);
                 $imagen = Image::find($valor);
-                Storage::disk('public/featureds')->delete($imagen->img);
+                Storage::disk('documents')->delete($imagen->img);
                 $imagen->delete();
             }
         }
@@ -1150,7 +1150,7 @@ function scanear_string($string)
             foreach($request->img as $img){
                 $file = $img;
                 $nombre = $file->getClientOriginalName();
-                Storage::disk('public')->put($nombre,  \File::get($file));
+                Storage::disk('documents')->put($nombre,  \File::get($file));
 
                 Image::create([
                     'id_worker' => $user->id,
