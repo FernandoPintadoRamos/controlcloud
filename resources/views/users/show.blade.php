@@ -435,18 +435,16 @@
 
             <div class="center">
                 <div style="padding:20px">
-                <pre>
-<strong>Codigo: </strong>{{$user->COD}}
-<strong>Apellidos: </strong>{{$user->AP1}}, {{$user->AP2}}
-<strong>Nombre: </strong>{{$user->NOM}}
-<strong>Empresa: </strong>{{$user->EMP  }}
-<strong>Rol: </strong>{{$user->role}}
-<strong>DNI: </strong>{{$user->DNI}}
-<strong>Fecha de alta: </strong>{{$user->FAL}}
-<strong>Email: </strong>{{$user->email}}
-<strong>Teléfono: </strong>...
-<strong>Ubicación: </strong>...
-                </pre>
+                <p style="font-family:Arial; font-size:19px">
+<strong>Codigo: </strong>{{$user->COD}} <br>
+<strong>Apellidos: </strong>{{$user->AP1}}, {{$user->AP2}}<br>
+<strong>Nombre: </strong>{{$user->NOM}}<br>
+<strong>Empresa: </strong>{{$user->EMP  }}<br>
+<strong>Rol: </strong>{{$user->role}}<br>
+<strong>DNI: </strong>{{$user->DNI}}<br>
+<strong>Fecha de alta: </strong>{{$user->FAL}}<br>
+<strong>Email: </strong>{{$user->email}}<br>
+                </p>
                 
                 </div>
 

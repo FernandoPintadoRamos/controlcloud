@@ -333,18 +333,22 @@
       @else
       <div>
         <div class="carousel-inner">
+          @if(Auth::user()->role != "supervisor")
           @isset($nombre)
           <img class="foto_perfil_supervisor" src="{{asset($ruta)}}">
           @endisset
+          @endif
       </div>  
       @endif
       @endforeach
       @endforeach
       </div>
       </br>
+      @if(Auth::user()->role != "supervisor")
       <div>
         <a style="font-size: 15px;color:white"class="enlace" href="#" data-toggle="modal" data-target="#editModal{{ $a['id'] }}">Cambiar foto de perfil</a>
       </div>
+      @endif
       <div style="float:left;padding:10px">
         <p style="color:white"><strong>Nombre: </strong> {{Auth::user()->NOM}} </br></p>
         <p style="color:white"><strong>Primer Apellido: </strong> {{Auth::user()->AP1}} </br></p>
