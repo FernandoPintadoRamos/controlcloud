@@ -46,14 +46,10 @@ class DocumentController extends Controller
     }
     
     public function downloadFile(Request $req){
-        $file = $req->archivo;
-        $file_array = explode('/', $file);
-        $nom = $file_array[sizeof($file_array)-1];
-        $connection = ftp_connect("ftp.hknominas.es");
-        $login = ftp_login($connection, "copiasrar.hknominas.es", "Appnomina123456");
-        ftp_get($connection, "C:\\temp\\".$nom, '/'.$file);
-        $descarga = "C:\\temp\\".$nom;
-        return response()->download($descarga);
+        $path = storage_path().'/'.'app'.'/documents/'.$req->nombre;
+        if (file_exists($path)) {
+            return response()->download($path);
+        }
     }
 
     public function obtenerRuta($file){

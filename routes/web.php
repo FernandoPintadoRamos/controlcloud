@@ -72,7 +72,6 @@ Route::group(['middleware' => ['verified']], function () {
     Route::post('justify/{id}','AbsenteeismsController@update')->name('justify');
     Route::resource('absenteeisms','AbsenteeismsController');
     // Documentos - Subida de documentos a la plataforma y visualización de los mismos desde ahí
-    Route::get('../storage/app/documents/{doc}','DocumentController@show')->name('download');
     Route::resource('documents','DocumentController');
 
     Route::get('documentsG','DocumentController@general')->name('general');

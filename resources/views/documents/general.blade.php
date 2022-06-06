@@ -118,7 +118,9 @@
   <div class="tarjeta">
 
     <div class="titulo" style="background-color:#F7AB40">
-      <h5><strong>{{$tipo}}</strong></h5>
+      @isset($tipo)
+        <h5><strong>{{$tipo}}</strong></h5>
+      @endisset
     </div>
     <div style="overflow: auto; padding:10px">
     <table id="myTable" data-order='[[ 0, "desc" ]]'>
@@ -202,11 +204,7 @@
           </td>
 
           <td>
-            @if($document->tipo != 'nomina')
-              <a href="{{ route('download', $document->doc)}}" class="enlace_descarga">Descargar</a><br><br>
-            @else
-              <a href="{{ route('descarga', ['archivo' => $document['doc']])}}">Descargar</a>
-            @endif
+              <a href="{{ route('descarga', ['nombre' =>$document->doc])}}" class="enlace_descarga">Descargar</a><br><br>
           </td>
           
         </tr>
