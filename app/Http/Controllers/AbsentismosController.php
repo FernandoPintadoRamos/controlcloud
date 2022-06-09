@@ -173,11 +173,8 @@ class AbsentismosController extends Controller
         }
 
         //Almacenamos solicitud
-        if($tipo == 'permiso'){
-            $aceptado = 1;
-        }else{
-            $aceptado = 0;
-        }
+        $aceptado = 0;
+        
 
         $cif = Auth::user()->CIF;
         $empresa = Empresa::where('CIF', $cif)->first();
